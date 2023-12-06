@@ -3,6 +3,7 @@ import prisma from "../db";
 import { create, deleteItem, edit } from "../action";
 import StateButton from "../components/StateButton";
 import Form from "../components/Form";
+import Image from "next/image";
 
 async function getData() {
   const data = await prisma.todo.findMany({
@@ -23,9 +24,22 @@ export default async function good() {
 
   return (
     <div className="grid place-content-center mt-10">
+      <Image
+        src="https://i.ibb.co/jG1yYn1/Whats-App-Image-2023-12-06-at-1-15-39-PM-removebg-preview.png"
+        width={500}
+        height={500}
+        alt="Picture of the author"
+      />
+
+      <p>Is this your first time posting?</p>
+
+      <button>Start here </button>
+      
+      <p>Already have an account?</p>
+
       Good practices
       <div className="shadow-xl w-[30vw] p-10">
-       <Form />
+        <Form />
 
         <>
           {data.map((todo) => (

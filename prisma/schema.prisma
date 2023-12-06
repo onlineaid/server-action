@@ -10,10 +10,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Todo {
   id       String   @id @default(auto()) @map("_id") @db.ObjectId
   input    String?
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+}
+
+model User {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  email    String   @unique
+  password String?
+  captcha  String?
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
 }
